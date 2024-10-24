@@ -57,7 +57,7 @@ namespace AxGrid.Tools.Binders{
 			if (string.IsNullOrEmpty(buttonName))
 				buttonName = name;
 			
-			enableField = enableField == "" ? $"Btn{buttonName}Enable" : enableField;
+			enableField = enableField == "" ? $"Btn{buttonName}Subscribe" : enableField;
 			if (!onKeyPress)
 				button.onClick.AddListener(OnClick);
 			else
