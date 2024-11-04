@@ -13,7 +13,7 @@ public class SceneInit : MonoBehaviourExt
     [OnStart]
     void onStart()
     {
-        items = Resources.LoadAll<SlotItemSO>("SlotItems");
+        items = Resources.LoadAll<SlotItemSO>("TASK3/SlotItems");
         SlotRouletteRef.Init(items);
         ParticlesRef.Init(items);
     }
