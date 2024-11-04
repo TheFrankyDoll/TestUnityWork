@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.Collections.ObjectModel;
+using AxGrid;
+using UnityEngine.UIElements;
 
 public class AxGridToolsTest : MonoBehaviourExt
 {
@@ -23,6 +25,28 @@ public class AxGridToolsTest : MonoBehaviourExt
     public Sprite sprite;
 
 
+    //void modelTest()
+    //{
+    //    var a = new List<string>();
+        
+    //    Model.Set("A", a);
+    //    Model.EventManager.AddAction($"OnAChanged", ping);
+
+    //    a.Add("TEXT");
+    //    Model.Set("A", a); //ping НЕ вызовется
+
+
+    //    var b = Model.Get<List<string>>("A");
+
+    //    b.Add("TEXT2");
+    //    b.RemoveAt(0);
+    //    Model.Set("A", b); //ping НЕ вызовется
+
+    //    Model.Set("A", new List<string>(b)); //ping ВЫЗОВИТСЯ, т.к. передан другой объект (в данном случае копия).
+    //}
+    //void ping() => Log.Info("!");
+
+
     public void SendChanges()
     {
         // 1.
@@ -31,13 +55,11 @@ public class AxGridToolsTest : MonoBehaviourExt
         // 2.
         Model.Set($"{DropdownNameField}Interactable", DropdownActive);
 
-
         //ЛИБО отправить копию списка.
         //Model.Set($"{DropdownNameField}Options", new List<TMPro.TMP_Dropdown.OptionData>(DropdownOptions));
-        //ЛИБО вручную указать изменения через Invoke.
+        //ЛИБО указать что данные были обновлены через Model.Refresh.
         Model.Set($"{DropdownNameField}Options", DropdownOptions);
-        Model.EventManager.Invoke($"On{DropdownNameField}OptionsChanged");
-
+        Model.Refresh($"{DropdownNameField}Options");
 
         Model.Set($"{DropdownNameField}SelectedOption", DropdownCurrentOption);
 
