@@ -1,4 +1,4 @@
-using AxGrid.Base;
+п»їusing AxGrid.Base;
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
@@ -10,34 +10,34 @@ namespace AxGrid.Tools.Binders
     {
         protected TMP_Dropdown dropdown;
 
-        [Tooltip("Имя выпадающего меню (если пустое берется из имени объекта)")]
+        [Tooltip("РРјСЏ РІС‹РїР°РґР°СЋС‰РµРіРѕ РјРµРЅСЋ (РµСЃР»Рё РїСѓСЃС‚РѕРµ Р±РµСЂРµС‚СЃСЏ РёР· РёРјРµРЅРё РѕР±СЉРµРєС‚Р°)")]
         public string dropdownName = "";
 
         [Space(5)]
 
-        [Tooltip("Имя Bool-значения в модели для включения/выключения взаимодействия с этим объектом.\n" +
-            "> Влияет на 'dropdown.interactable'.")]
+        [Tooltip("РРјСЏ Bool-Р·РЅР°С‡РµРЅРёСЏ РІ РјРѕРґРµР»Рё РґР»СЏ РІРєР»СЋС‡РµРЅРёСЏ/РІС‹РєР»СЋС‡РµРЅРёСЏ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃ СЌС‚РёРј РѕР±СЉРµРєС‚РѕРј.\n" +
+            "> Р’Р»РёСЏРµС‚ РЅР° 'dropdown.interactable'.")]
         public string enableField = "";
 
-        [Tooltip("Активен ли объект по умолчанию?")]
+        [Tooltip("РђРєС‚РёРІРµРЅ Р»Рё РѕР±СЉРµРєС‚ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ?")]
         public bool defaultEnable = true;
 
         [Space(5)]
 
-        [Tooltip("Имя TMP_Dropdown.OptionData-значения в модели для вариантов выбора в списке.\n" +
-            "> Влияет на 'dropdown.options'.")]
+        [Tooltip("РРјСЏ TMP_Dropdown.OptionData-Р·РЅР°С‡РµРЅРёСЏ РІ РјРѕРґРµР»Рё РґР»СЏ РІР°СЂРёР°РЅС‚РѕРІ РІС‹Р±РѕСЂР° РІ СЃРїРёСЃРєРµ.\n" +
+            "> Р’Р»РёСЏРµС‚ РЅР° 'dropdown.options'.")]
         public string optionsField = "";
 
-        [Tooltip("Список опций по умолчанию.")]
+        [Tooltip("РЎРїРёСЃРѕРє РѕРїС†РёР№ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.")]
         public List<TMP_Dropdown.OptionData> defaultOptions = new List<TMP_Dropdown.OptionData>();
 
         [Space(5)]
 
-        [Tooltip("Имя int-значения в модели для выбранного варианта.\n" +
-            "> Влияет на 'dropdown.value'.")]
+        [Tooltip("РРјСЏ int-Р·РЅР°С‡РµРЅРёСЏ РІ РјРѕРґРµР»Рё РґР»СЏ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РІР°СЂРёР°РЅС‚Р°.\n" +
+            "> Р’Р»РёСЏРµС‚ РЅР° 'dropdown.value'.")]
         public string selectedOptionField = "";
 
-        [Tooltip("Выбранная опция по умолчанию.")]
+        [Tooltip("Р’С‹Р±СЂР°РЅРЅР°СЏ РѕРїС†РёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.")]
         public int defaultSelectedOption = 0;
 
 
@@ -62,7 +62,7 @@ namespace AxGrid.Tools.Binders
             Model.EventManager.AddAction($"On{selectedOptionField}Changed", DrawSelectedChange);
         }
 
-        /// <summary> Обновить весь Dropdown целиком, перерисовав актуальные данные из модели. </summary>
+        /// <summary> РћР±РЅРѕРІРёС‚СЊ РІРµСЃСЊ Dropdown С†РµР»РёРєРѕРј, РїРµСЂРµСЂРёСЃРѕРІР°РІ Р°РєС‚СѓР°Р»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ РёР· РјРѕРґРµР»Рё. </summary>
         [OnStart]
         public virtual void Redraw()
         {
@@ -82,7 +82,7 @@ namespace AxGrid.Tools.Binders
         {
             if (!dropdown.interactable || !isActiveAndEnabled) return;
 
-            Log.Info($"{dropdownName} Новое значение получено: {newValueID}");
+            Log.Info($"{dropdownName} РќРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РїРѕР»СѓС‡РµРЅРѕ: {newValueID}");
 
             Settings.Fsm?.Invoke($"On{dropdownName}ValueSet", newValueID, dropdown.options[newValueID]);
             Model.EventManager.Invoke($"On{dropdownName}ValueSet", newValueID, dropdown.options[newValueID]);

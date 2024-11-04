@@ -1,4 +1,4 @@
-using AxGrid.Base;
+п»їusing AxGrid.Base;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -46,9 +46,9 @@ public class AxGridToolsTestEditor : Editor
     {
         base.OnInspectorGUI();
 
-        if (GUILayout.Button("Отправить данные в модель"))
+        if (GUILayout.Button("РћС‚РїСЂР°РІРёС‚СЊ РґР°РЅРЅС‹Рµ РІ РјРѕРґРµР»СЊ"))
         {
-            if (!EditorApplication.isPlaying) Debug.LogError("Модель не будет получать значения пока игра не запущенна. Запустите игру.");
+            if (!EditorApplication.isPlaying) Debug.LogError("РњРѕРґРµР»СЊ РЅРµ Р±СѓРґРµС‚ РїРѕР»СѓС‡Р°С‚СЊ Р·РЅР°С‡РµРЅРёСЏ РїРѕРєР° РёРіСЂР° РЅРµ Р·Р°РїСѓС‰РµРЅРЅР°. Р—Р°РїСѓСЃС‚РёС‚Рµ РёРіСЂСѓ.");
             else (target as AxGridToolsTest).SendChanges();
         }
     }

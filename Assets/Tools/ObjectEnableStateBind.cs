@@ -1,21 +1,21 @@
-using AxGrid.Base;
+п»їusing AxGrid.Base;
 using UnityEngine;
 
 namespace AxGrid.Tools.Binders
 {
     public class ObjectEnableStateBind : Binder
     {
-        [Tooltip("Имя Bool-значения в модели для включения/выключения этого объекта.")]
+        [Tooltip("РРјСЏ Bool-Р·РЅР°С‡РµРЅРёСЏ РІ РјРѕРґРµР»Рё РґР»СЏ РІРєР»СЋС‡РµРЅРёСЏ/РІС‹РєР»СЋС‡РµРЅРёСЏ СЌС‚РѕРіРѕ РѕР±СЉРµРєС‚Р°.")]
         public string enableStateField = "";
 
-        [Tooltip("Включен ли объект по умолчанию?")]
+        [Tooltip("Р’РєР»СЋС‡РµРЅ Р»Рё РѕР±СЉРµРєС‚ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ?")]
         public bool defaultEnable = true;
 
 
         [OnStart]
         public void Subscribe()
         {
-            if (string.IsNullOrWhiteSpace(enableStateField)) throw new System.NullReferenceException($"Значение для модели переменной у объекта {gameObject.name} не задано!");
+            if (string.IsNullOrWhiteSpace(enableStateField)) throw new System.NullReferenceException($"Р—РЅР°С‡РµРЅРёРµ РґР»СЏ РјРѕРґРµР»Рё РїРµСЂРµРјРµРЅРЅРѕР№ Сѓ РѕР±СЉРµРєС‚Р° {gameObject.name} РЅРµ Р·Р°РґР°РЅРѕ!");
             Model.EventManager.AddAction($"On{enableStateField}Changed", OnStateChange);
             OnStateChange();
         }
@@ -26,7 +26,7 @@ namespace AxGrid.Tools.Binders
             if (gameObject.activeSelf != Model.GetBool(enableStateField, defaultEnable))
             {
                 gameObject.SetActive(Model.GetBool(enableStateField, defaultEnable));
-                Log.Info($"Статус объекта {gameObject.name} изменён: {gameObject.activeSelf}");
+                Log.Info($"РЎС‚Р°С‚СѓСЃ РѕР±СЉРµРєС‚Р° {gameObject.name} РёР·РјРµРЅС‘РЅ: {gameObject.activeSelf}");
             }
         }
 

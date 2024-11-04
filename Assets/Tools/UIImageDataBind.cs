@@ -1,4 +1,4 @@
-using AxGrid.Base;
+п»їusing AxGrid.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +11,7 @@ namespace AxGrid.Tools.Binders
 
         [SerializeField] Sprite DefaultSprite;
 
-        [Tooltip("Ссылка на значение нужного спрайта в модели.")]
+        [Tooltip("РЎСЃС‹Р»РєР° РЅР° Р·РЅР°С‡РµРЅРёРµ РЅСѓР¶РЅРѕРіРѕ СЃРїСЂР°Р№С‚Р° РІ РјРѕРґРµР»Рё.")]
         public string spriteLinkField = "";
 
         [OnAwake]
@@ -20,7 +20,7 @@ namespace AxGrid.Tools.Binders
         [OnStart]
         protected void Subscribe()
         {
-            if (string.IsNullOrWhiteSpace(spriteLinkField)) throw new System.NullReferenceException($"Значение для модели переменной у объекта {gameObject.name} не задано!");
+            if (string.IsNullOrWhiteSpace(spriteLinkField)) throw new System.NullReferenceException($"Р—РЅР°С‡РµРЅРёРµ РґР»СЏ РјРѕРґРµР»Рё РїРµСЂРµРјРµРЅРЅРѕР№ Сѓ РѕР±СЉРµРєС‚Р° {gameObject.name} РЅРµ Р·Р°РґР°РЅРѕ!");
             Model.EventManager.AddAction($"On{spriteLinkField}Changed", DrawSpriteChange);
 
             DrawSpriteChange();
@@ -29,7 +29,7 @@ namespace AxGrid.Tools.Binders
         void DrawSpriteChange()
         {
             image.sprite = Model.Get(spriteLinkField, DefaultSprite);
-            Log.Info($"{gameObject.name}: спрайт изменён.");
+            Log.Info($"{gameObject.name}: СЃРїСЂР°Р№С‚ РёР·РјРµРЅС‘РЅ.");
         }
 
         [OnDestroy]
