@@ -9,13 +9,13 @@ public class SpinOngoingState : FSMState
     [Enter]
     void Enter()
     {
-        Model.Set(StateMachine.properties.StopableField, true);
+        Model.Set(StateMachineT3.properties.StopableField, true);
     }
 
     [Bind("OnBtn")]
     void onButtonClick(string buttonName)
     {
-        if (buttonName == StateMachine.properties.StopButtonName)
+        if (buttonName == StateMachineT3.properties.StopButtonName)
         {
             Parent.Change(nextState);
         }

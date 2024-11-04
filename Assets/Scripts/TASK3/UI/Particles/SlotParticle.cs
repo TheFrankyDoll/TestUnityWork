@@ -18,17 +18,17 @@ public class SlotParticle : MonoBehaviourExt
     [OnEnable]
     private void Subscribe()
     {
-        Model.EventManager.AddAction<float>(StateMachine.properties.SpinStartedEvent, StartFlow);
-        Model.EventManager.AddAction<float>(StateMachine.properties.SpinSlowdownEvent, SlowdownFlow);
-        Model.EventManager.AddAction<SlotItemSO>(StateMachine.properties.SpinFullStopEvent, EndFall);
+        Model.EventManager.AddAction<float>(StateMachineT3.properties.SpinStartedEvent, StartFlow);
+        Model.EventManager.AddAction<float>(StateMachineT3.properties.SpinSlowdownEvent, SlowdownFlow);
+        Model.EventManager.AddAction<SlotItemSO>(StateMachineT3.properties.SpinFullStopEvent, EndFall);
     }
 
     [OnDisable]
     private void Unsubscribe()
     {
-        Model.EventManager.RemoveAction<float>(StateMachine.properties.SpinStartedEvent, StartFlow);
-        Model.EventManager.RemoveAction<float>(StateMachine.properties.SpinSlowdownEvent, SlowdownFlow);
-        Model.EventManager.RemoveAction<SlotItemSO>(StateMachine.properties.SpinFullStopEvent, EndFall);
+        Model.EventManager.RemoveAction<float>(StateMachineT3.properties.SpinStartedEvent, StartFlow);
+        Model.EventManager.RemoveAction<float>(StateMachineT3.properties.SpinSlowdownEvent, SlowdownFlow);
+        Model.EventManager.RemoveAction<SlotItemSO>(StateMachineT3.properties.SpinFullStopEvent, EndFall);
     }
 
     void StartFlow(float speedUpTime)

@@ -11,15 +11,15 @@ public class SpinSlowdownState : FSMState
     [Enter]
     void Enter()
     {
-        Model.Set(StateMachine.properties.StopableField, false);
+        Model.Set(StateMachineT3.properties.StopableField, false);
 
-        Invoke(StateMachine.properties.SpinSlowdownEvent, slowdownTime);
+        Invoke(StateMachineT3.properties.SpinSlowdownEvent, slowdownTime);
     }
 
     [Exit]
     void Exit()
     {
-        Invoke(StateMachine.properties.SpinStopEvent);
+        Invoke(StateMachineT3.properties.SpinStopEvent);
     }
 
     [One(slowdownTime)]

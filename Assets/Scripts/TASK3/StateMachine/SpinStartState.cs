@@ -11,9 +11,9 @@ public class SpinStartState : FSMState
     [Enter]
     void Enter()
     {
-        Model.Set(StateMachine.properties.StartableField, false);
+        Model.Set(StateMachineT3.properties.StartableField, false);
 
-        Invoke(StateMachine.properties.SpinStartedEvent, speedupTime);
+        Invoke(StateMachineT3.properties.SpinStartedEvent, speedupTime);
     }
 
     [One(speedupTime)]

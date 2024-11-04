@@ -3,7 +3,7 @@ using AxGrid.Base;
 using AxGrid.FSM;
 using AxGrid;
 
-public class StateMachine : MonoBehaviourExt
+public class StateMachineT3 : MonoBehaviourExt
 {
     public readonly static Properties properties = new()
     {

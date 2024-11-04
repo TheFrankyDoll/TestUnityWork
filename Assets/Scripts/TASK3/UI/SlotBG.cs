@@ -16,15 +16,15 @@ public class SlotBG : MonoBehaviourExt
     [OnEnable]
     private void Subscribe()
     {
-        Model.EventManager.AddAction(StateMachine.properties.SpinStartedEvent, ResetColor);
-        Model.EventManager.AddAction<SlotItemSO>(StateMachine.properties.SpinFullStopEvent, SetColor);
+        Model.EventManager.AddAction(StateMachineT3.properties.SpinStartedEvent, ResetColor);
+        Model.EventManager.AddAction<SlotItemSO>(StateMachineT3.properties.SpinFullStopEvent, SetColor);
     }
 
     [OnDisable]
     private void Unsubscribe()
     {
-        Model.EventManager.RemoveAction(StateMachine.properties.SpinStartedEvent, ResetColor);
-        Model.EventManager.RemoveAction<SlotItemSO>(StateMachine.properties.SpinFullStopEvent, SetColor);
+        Model.EventManager.RemoveAction(StateMachineT3.properties.SpinStartedEvent, ResetColor);
+        Model.EventManager.RemoveAction<SlotItemSO>(StateMachineT3.properties.SpinFullStopEvent, SetColor);
     }
 
     public void ResetColor()

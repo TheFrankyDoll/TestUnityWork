@@ -9,14 +9,14 @@ public class AwaitState : FSMState
     [Enter]
     void Enter()
     {
-        Model.Set(StateMachine.properties.StartableField, true);
-        Model.Set(StateMachine.properties.StopableField, false);
+        Model.Set(StateMachineT3.properties.StartableField, true);
+        Model.Set(StateMachineT3.properties.StopableField, false);
     }
 
     [Bind("OnBtn")]
     void onButtonClick(string buttonName)
     {
-        if (buttonName == StateMachine.properties.StartButtonName)
+        if (buttonName == StateMachineT3.properties.StartButtonName)
         {
             Parent.Change(nextState);
         }

@@ -47,16 +47,16 @@ public class SlotRoulette : MonoBehaviourExt
 
     [OnEnable]
     private void Subscribe() {
-        Model.EventManager.AddAction<float>(StateMachine.properties.SpinStartedEvent, Spin);
-        Model.EventManager.AddAction<float>(StateMachine.properties.SpinSlowdownEvent, Slowdown);
-        Model.EventManager.AddAction(StateMachine.properties.SpinStopEvent, FullStop);
+        Model.EventManager.AddAction<float>(StateMachineT3.properties.SpinStartedEvent, Spin);
+        Model.EventManager.AddAction<float>(StateMachineT3.properties.SpinSlowdownEvent, Slowdown);
+        Model.EventManager.AddAction(StateMachineT3.properties.SpinStopEvent, FullStop);
     }
 
     [OnDisable]
     private void Unsubscribe() {
-        Model.EventManager.RemoveAction<float>(StateMachine.properties.SpinStartedEvent, Spin);
-        Model.EventManager.RemoveAction<float>(StateMachine.properties.SpinSlowdownEvent, Slowdown);
-        Model.EventManager.RemoveAction(StateMachine.properties.SpinStopEvent, FullStop);
+        Model.EventManager.RemoveAction<float>(StateMachineT3.properties.SpinStartedEvent, Spin);
+        Model.EventManager.RemoveAction<float>(StateMachineT3.properties.SpinSlowdownEvent, Slowdown);
+        Model.EventManager.RemoveAction(StateMachineT3.properties.SpinStopEvent, FullStop);
     }
 
 
@@ -151,7 +151,7 @@ public class SlotRoulette : MonoBehaviourExt
                 })
             .Action(() =>
             {
-                Model.EventManager.Invoke(StateMachine.properties.SpinFullStopEvent, currentReward);
+                Model.EventManager.Invoke(StateMachineT3.properties.SpinFullStopEvent, currentReward);
             });
     }
 
