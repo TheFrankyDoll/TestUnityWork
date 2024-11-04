@@ -73,7 +73,11 @@ namespace AxGrid.Tools.Binders
 
         public void DrawInteractableChange() => dropdown.interactable = Model.GetBool(enableField, defaultEnable);
 
-        public void DrawOptionsChange() => dropdown.options = Model.Get(optionsField, defaultOptions);
+        public void DrawOptionsChange()
+        {
+            dropdown.options = Model.Get(optionsField, defaultOptions);
+            dropdown.RefreshShownValue();
+        }
 
         public void DrawSelectedChange() => dropdown.value = Model.GetInt(selectedOptionField, defaultSelectedOption);
 

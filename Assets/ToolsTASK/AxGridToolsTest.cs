@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System.Collections.ObjectModel;
 
 public class AxGridToolsTest : MonoBehaviourExt
 {
@@ -29,7 +30,15 @@ public class AxGridToolsTest : MonoBehaviourExt
 
         // 2.
         Model.Set($"{DropdownNameField}Interactable", DropdownActive);
+
+
+        //ЛИБО отправить копию списка.
+        //Model.Set($"{DropdownNameField}Options", new List<TMPro.TMP_Dropdown.OptionData>(DropdownOptions));
+        //ЛИБО вручную указать изменения через Invoke.
         Model.Set($"{DropdownNameField}Options", DropdownOptions);
+        Model.EventManager.Invoke($"On{DropdownNameField}OptionsChanged");
+
+
         Model.Set($"{DropdownNameField}SelectedOption", DropdownCurrentOption);
 
         // 3.
