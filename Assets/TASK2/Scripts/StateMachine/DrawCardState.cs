@@ -1,4 +1,4 @@
-using UnityEngine;
+п»їusing UnityEngine;
 using AxGrid.FSM;
 using AxGrid.Model;
 using AxGrid;
@@ -30,11 +30,11 @@ public class DrawCardState : FSMState
     void onCardClick(CardSO card)
     {
         if (!Model.GetBool(StateMachineT2.CanMoveField)) {
-            Log.Warn("Карта не может быть перемещена, так как на столе нет места.");
+            Log.Warn("РљР°СЂС‚Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїРµСЂРµРјРµС‰РµРЅР°, С‚Р°Рє РєР°Рє РЅР° СЃС‚РѕР»Рµ РЅРµС‚ РјРµСЃС‚Р°.");
             return;
         }
         if (StateMachineT2.TableCards.Contains(card)) {
-            Log.Warn("Эта карта уже перемещена на стол");
+            Log.Warn("Р­С‚Р° РєР°СЂС‚Р° СѓР¶Рµ РїРµСЂРµРјРµС‰РµРЅР° РЅР° СЃС‚РѕР»");
             return;
         }
 

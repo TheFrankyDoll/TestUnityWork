@@ -1,4 +1,4 @@
-using UnityEngine;
+п»їusing UnityEngine;
 using AxGrid.Base;
 using AxGrid.FSM;
 using AxGrid;
@@ -40,7 +40,7 @@ public class StateMachineT2 : MonoBehaviourExt
 
     #endregion
 
-    /// <summary> Проверит, можно ли забирать/двигать карты опираясь на их кол-во на столе. </summary>
+    /// <summary> РџСЂРѕРІРµСЂРёС‚, РјРѕР¶РЅРѕ Р»Рё Р·Р°Р±РёСЂР°С‚СЊ/РґРІРёРіР°С‚СЊ РєР°СЂС‚С‹ РѕРїРёСЂР°СЏСЃСЊ РЅР° РёС… РєРѕР»-РІРѕ РЅР° СЃС‚РѕР»Рµ. </summary>
     public static void CheckCardCounts()
     {
         Settings.Model.Set(CanDrawField, DrawnCards.Count < MaxDrawCards);
