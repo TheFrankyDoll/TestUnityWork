@@ -36,7 +36,6 @@ public class StateMachineT3 : MonoBehaviourExt
 
     [OnUpdate] void updateFsm() => fsm.Update(Time.deltaTime);
 
-    [System.Serializable]
     public struct Properties
     {
         public string StartableField;
