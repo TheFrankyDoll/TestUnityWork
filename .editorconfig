@@ -1,0 +1,4 @@
+# top-most EditorConfig file
+root = true
+[.cs]
+charset = utf-8
