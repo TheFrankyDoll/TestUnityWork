@@ -1,8 +1,11 @@
 using AxGrid.Base;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CardsView : MonoBehaviourExt
 {
+    public static Dictionary<CardSO, CardObject> ObjectFromCard = new Dictionary<CardSO, CardObject>();
+
     public Transform CardsParent;
     public GameObject CardPrefab;
     [Space(5)]
@@ -10,19 +13,17 @@ public class CardsView : MonoBehaviourExt
     public UICardGroup TableGroup;
 
 
-    Vector3 spawnPos = new Vector3(0, -500f);
+    Vector3 spawnPos = new Vector3(500f, -800f);
 
     [OnStart]
     private void Subscribe()
     {
         Model.EventManager.AddAction<CardSO>(StateMachineT2.CardDrawnEvent, SpawnCard);
-        Model.EventManager.AddAction<CardObject>(StateMachineT2.CardMovedEvent, MoveCard);
     }
     [OnDestroy]
     private void Unsubscribe()
     {
         Model.EventManager.RemoveAction<CardSO>(StateMachineT2.CardDrawnEvent, SpawnCard);
-        Model.EventManager.RemoveAction<CardObject>(StateMachineT2.CardMovedEvent, MoveCard);
     }
 
     public void SpawnCard(CardSO data)
@@ -32,16 +33,6 @@ public class CardsView : MonoBehaviourExt
 
         obj.rectTr.anchoredPosition = spawnPos;
 
-        DrawnGroup.LinkedCardObjects.Add(obj);
-        DrawnGroup.RedrawCardPlaces();
-    }
-
-    public void MoveCard(CardObject card)
-    {
-        DrawnGroup.LinkedCardObjects.Remove(card);
-        DrawnGroup.RedrawCardPlaces();
-
-        TableGroup.LinkedCardObjects.Add(card);
-        TableGroup.RedrawCardPlaces();
+        ObjectFromCard.Add(data, obj);
     }
 }

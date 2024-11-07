@@ -369,11 +369,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e96a76b6a955143b61566c465cafcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalModel: 0
+  RelatedCardsList: TableCardsField
   CardWidth: 245
   PreferredSpacing: 2.5
   SidePadding: 150
   CardYChange: 15
-  LinkedCardObjects: []
 --- !u!1 &113655129
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,11 +608,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e96a76b6a955143b61566c465cafcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalModel: 0
+  RelatedCardsList: DrawnCardsField
   CardWidth: 245
   PreferredSpacing: 2.5
   SidePadding: 150
   CardYChange: 15
-  LinkedCardObjects: []
 --- !u!1 &170168972
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,13 +1,16 @@
 using AxGrid.Base;
+using AxGrid.Model;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(RectTransform))]
-public class UICardGroup : MonoBehaviourExt
+public class UICardGroup : MonoBehaviourExtBind
 {
     private RectTransform rectTr;
+
+    public string RelatedCardsList;
 
     [Space(10)]
 
@@ -18,29 +21,35 @@ public class UICardGroup : MonoBehaviourExt
 
     public float CardYChange = 2.5f;
 
-
-    public List<CardObject> LinkedCardObjects = new List<CardObject>();
-
     [OnAwake]
     void Init()
     {
         rectTr = GetComponent<RectTransform>();
     }
 
+    [Bind("On{RelatedCardsList}Changed")]
     public void RedrawCardPlaces()
     {
-        if (LinkedCardObjects == null || LinkedCardObjects.Count == 0) return;
+        var cardList = Model.Get<List<CardSO>>(RelatedCardsList);
+        CardObject[] DrawnCards = new CardObject[cardList.Count];
+
+        for (int i = 0; i < cardList.Count; i++)
+        {
+            DrawnCards[i] = CardsView.ObjectFromCard[cardList[i]];
+        }
+
+        if (DrawnCards.Length == 0) return;
 
         float cardInterval = CardWidth + PreferredSpacing;
-        if(cardInterval * LinkedCardObjects.Count > rectTr.rect.width - SidePadding) cardInterval = (rectTr.rect.width - SidePadding) / LinkedCardObjects.Count;
+        if(cardInterval * DrawnCards.Length > rectTr.rect.width - SidePadding) cardInterval = (rectTr.rect.width - SidePadding) / DrawnCards.Length;
 
         float cardX, cardY;
 
-        cardX = rectTr.rect.center.x - (cardInterval * (float)(LinkedCardObjects.Count-1) * 0.5f);
+        cardX = rectTr.rect.center.x - (cardInterval * (float)(DrawnCards.Length -1) * 0.5f);
         cardY = CardYChange;
-        for (int i = 0; i < LinkedCardObjects.Count; i++)
+        for (int i = 0; i < DrawnCards.Length; i++)
         {
-            LinkedCardObjects[i].MoveToNewPos(rectTr.TransformPoint(rectTr.rect.center + new Vector2(cardX, cardY)));
+            DrawnCards[i].MoveToNewPos(rectTr.TransformPoint(rectTr.rect.center + new Vector2(cardX, cardY)));
 
             cardX += cardInterval;
             cardY = i % 2 == 0 ? -CardYChange : CardYChange;

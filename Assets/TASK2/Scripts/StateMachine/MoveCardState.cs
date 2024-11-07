@@ -11,7 +11,11 @@ public class MoveCardState : FSMState
         var card = Model.Get<CardObject>(StateMachineT2.CardToMoveField);
 
         StateMachineT2.DrawnCards.Remove(card.Data);
+        Model.Refresh(StateMachineT2.DrawnCardsListName);
+
         StateMachineT2.TableCards.Add(card.Data);
+        Model.Refresh(StateMachineT2.TableCardsListName);
+
         Invoke(StateMachineT2.CardMovedEvent, card);
 
         StateMachineT2.CheckCardCounts();

@@ -10,9 +10,10 @@ public class DrawCardState : FSMState
     {
         var cards = Model.Get<CardSO[]>(StateMachineT2.CardSourcesField);
         CardSO newCard = Object.Instantiate(cards[Random.Range(0, cards.Length)]);
+        Invoke(StateMachineT2.CardDrawnEvent, newCard);
 
         StateMachineT2.DrawnCards.Add(newCard);
-        Invoke(StateMachineT2.CardDrawnEvent, newCard);
+        Model.Refresh(StateMachineT2.DrawnCardsListName);
 
         StateMachineT2.CheckCardCounts();
     }
