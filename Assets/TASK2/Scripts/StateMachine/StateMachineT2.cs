@@ -10,6 +10,7 @@ public class StateMachineT2 : MonoBehaviourExt
 
     public const string CardSourcesField = "CardSources";
 
+    public const int DrawCardsCapacity = 12;
     public const string DrawnCardsListName = "DrawnCardsField";
     public static List<CardSO> DrawnCards
     {
@@ -17,6 +18,7 @@ public class StateMachineT2 : MonoBehaviourExt
         set => Settings.Model.Set(DrawnCardsListName, value);
     }
 
+    public const int TableCardsCapacity = 12;
     public const string TableCardsListName = "TableCardsField";
     public static List<CardSO> TableCards
     {
@@ -24,10 +26,19 @@ public class StateMachineT2 : MonoBehaviourExt
         set => Settings.Model.Set(TableCardsListName, value);
     }
 
+    public const int ThirdCardsCapacity = 12;
+    public const string ThirdCardsListName = "ThirdCardsField";
+    public static List<CardSO> ThirdCards
+    {
+        get => Settings.Model.Get<List<CardSO>>(ThirdCardsListName);
+        set => Settings.Model.Set(ThirdCardsListName, value);
+    }
+
     public const string DrawButtonName = "DrawButton";
 
     public const string CanDrawField = "CanDrawCard";
     public const string CanMoveField = "CanMoveCard";
+    public const string CanThirdField = "CanThirdMoveCard";
 
     public const string CardDrawnEvent = "OnCardDrawn";
     public const string CardMovedEvent = "OnCardMoved";
@@ -35,16 +46,17 @@ public class StateMachineT2 : MonoBehaviourExt
     public const string CardToMoveField = "CardToMove";
     public const string FSM_ReceiveCardToMove = "ReceiveCardToMove";
 
-    public const int MaxDrawCards = 12;
-    public const int MaxTableCards = 12;
+
+    
 
     #endregion
 
     /// <summary> Проверит, можно ли забирать/двигать карты опираясь на их кол-во на столе. </summary>
     public static void CheckCardCounts()
     {
-        Settings.Model.Set(CanDrawField, DrawnCards.Count < MaxDrawCards);
-        Settings.Model.Set(CanMoveField, TableCards.Count < MaxTableCards);
+        Settings.Model.Set(CanDrawField, DrawnCards.Count < DrawCardsCapacity);
+        Settings.Model.Set(CanMoveField, TableCards.Count < TableCardsCapacity);
+        Settings.Model.Set(CanThirdField, ThirdCards.Count < ThirdCardsCapacity);
     }
 
     [OnStart]

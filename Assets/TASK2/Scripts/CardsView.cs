@@ -8,10 +8,6 @@ public class CardsView : MonoBehaviourExt
 
     public Transform CardsParent;
     public GameObject CardPrefab;
-    [Space(5)]
-    public UICardGroup DrawnGroup;
-    public UICardGroup TableGroup;
-
 
     Vector3 spawnPos = new Vector3(500f, -800f);
 

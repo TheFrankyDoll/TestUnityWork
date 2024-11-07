@@ -12,6 +12,7 @@ public class CardsInitState : FSMState
 
         StateMachineT2.DrawnCards = new List<CardSO>();
         StateMachineT2.TableCards = new List<CardSO>();
+        StateMachineT2.ThirdCards = new List<CardSO>();
 
         StateMachineT2.CheckCardCounts();
     }

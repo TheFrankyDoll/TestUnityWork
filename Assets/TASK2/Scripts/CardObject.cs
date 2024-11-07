@@ -46,7 +46,7 @@ public class CardObject : MonoBehaviourExt, IPointerClickHandler, IPointerEnterH
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
-        Model.Set(StateMachineT2.CardToMoveField, this);
+        Model.Set(StateMachineT2.CardToMoveField, Data);
         Settings.Fsm.Invoke(StateMachineT2.FSM_ReceiveCardToMove, Data);
     }
 

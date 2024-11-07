@@ -30,14 +30,28 @@ public class DrawCardState : FSMState
     [Bind(StateMachineT2.FSM_ReceiveCardToMove)]
     void onCardClick(CardSO card)
     {
-        if (!Model.GetBool(StateMachineT2.CanMoveField)) {
-            Log.Warn("Карта не может быть перемещена, так как на столе нет места.");
+        if (StateMachineT2.DrawnCards.Contains(card))
+        {
+            if (!Model.GetBool(StateMachineT2.CanMoveField))
+            {
+                Log.Warn("Карта не может быть перемещена, так как на столе нет места.");
+                return;
+            }
+        }
+        else if (StateMachineT2.TableCards.Contains(card))
+        {
+            if (!Model.GetBool(StateMachineT2.CanThirdField))
+            {
+                Log.Warn("Карта не может быть перемещена, так как на 3-ем столе нет места.");
+                return;
+            }
+        }
+        else if (StateMachineT2.ThirdCards.Contains(card))
+        {
+            Log.Warn("Эта карта уже перемещена на последний стол");
             return;
         }
-        if (StateMachineT2.TableCards.Contains(card)) {
-            Log.Warn("Эта карта уже перемещена на стол");
-            return;
-        }
+        else throw new System.IndexOutOfRangeException("Карта не находится в доступном для перемещения списке!");
 
         Parent.Change("MoveCard");
     }
